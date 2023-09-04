@@ -3,7 +3,7 @@
 // iterative
 function fibs(n) {
   return Array.from({ length: n }).reduce(
-    (acc, _, i) => acc.concat(i < 2 ? i : acc.at(-1) + acc.at(-2)),
+    (acc, _, i) => acc.concat(i < 2 ? i : acc.at(-2) + acc.at(-1)),
     []
   );
 }
