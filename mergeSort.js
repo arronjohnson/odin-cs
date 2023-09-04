@@ -12,18 +12,17 @@ function mergeSort(arr) {
 
 function merge(left, right) {
   let arr = [];
-  let leftIndex = 0;
-  let rightIndex = 0;
+  let [leftIndex, rightIndex] = [0, 0];
 
   while (leftIndex < left.length && rightIndex < right.length) {
     if (left[leftIndex] < right[rightIndex]) {
-      arr.push(left[leftIndex]);
-      leftIndex++;
+      arr.push(left[leftIndex++]);
     } else {
-      arr.push(right[rightIndex]);
-      rightIndex++;
+      arr.push(right[rightIndex++]);
     }
   }
   // append remaining elements from both halves
   return arr.concat(left.slice(leftIndex), right.slice(rightIndex));
 }
+
+console.log(mergeSort([10, 0, 5, 3]));
