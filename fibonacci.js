@@ -2,10 +2,12 @@
 
 // iterative
 function fibs(n) {
-  return Array.from({ length: n }).reduce(
-    (acc, _, i) => acc.concat(i < 2 ? i : acc.at(-2) + acc.at(-1)),
-    []
-  );
+  const sequence = [0, 1];
+  if (n <= 2) return sequence.slice(0, n);
+  for (let i = 2; i < n; i++) {
+    sequence.push(sequence.at(-2) + sequence.at(-1));
+  }
+  return sequence;
 }
 
 // recursive
