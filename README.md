@@ -1,6 +1,6 @@
 # The Odin Project: A Bit of Computer Science
 
-This repo contains solutions to the projects in the [Computer Science section](<(https://www.theodinproject.com/paths/full-stack-javascript/courses/javascript#a-bit-of-computer-science)>) of TOP's full-stack
+This repo contains solutions to the projects in the [Computer Science section](https://www.theodinproject.com/paths/full-stack-javascript/courses/javascript#a-bit-of-computer-science) of TOP's full-stack
 JavaScript path.
 
 Links to the individual lessons are provided below.
