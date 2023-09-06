@@ -9,7 +9,7 @@ class Node {
 class BinarySearchTree {
   constructor(arr) {
     // to balance, sort ascending and remove duplicates before constructing the tree
-    const sortedArr = [...new Set(arr.sort((a, b) => a - b))];
+    const sortedArr = [...new Set(arr)].sort((a, b) => a - b);
     this.root = this.buildTree(sortedArr);
   }
 
