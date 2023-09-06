@@ -30,7 +30,10 @@ class LinkedList {
 
   append(value) {
     const node = new Node(value);
-    if (this.isEmpty()) return this.initialise(node);
+    if (this.isEmpty()) {
+      this.initialise(node);
+      return;
+    }
 
     this.tail.next = node;
     this.tail = node;
@@ -39,7 +42,10 @@ class LinkedList {
 
   prepend(value) {
     const node = new Node(value);
-    if (this.isEmpty()) return this.initialise(node);
+    if (this.isEmpty()) {
+      this.initialise(node);
+      return;
+    }
 
     node.next = this.head;
     this.head = node;
@@ -47,11 +53,17 @@ class LinkedList {
   }
 
   insertAt(value, index) {
-    if (index === 0) return this.prepend(value);
-    if (index >= this.size) return this.append(value);
+    if (index === 0) {
+      this.prepend(value);
+      return;
+    }
+    if (index >= this.size) {
+      this.append(value);
+      return;
+    }
 
     const node = new Node(value);
-    let before = this.at(index - 1); // find the node at index - 1
+    const before = this.at(index - 1); // find the node at index - 1
     node.next = before.next; // point to the current node at index
     before.next = node; // update the node at index - 1
     this.size++;
@@ -59,20 +71,26 @@ class LinkedList {
 
   removeAt(index) {
     if (index > this.size - 1) return; // invalid index provided
-    if (index === this.size - 1) return this.pop(); // same as removing the last element
+
+    // same as removing the last element
+    if (index === this.size - 1) {
+      this.pop();
+      return;
+    }
 
     // same as removing the first element
     if (index === 0) {
       if (this.size === 1) {
-        return this.clear(); // list only has a single node, so reset both head and tail
+        this.clear(); // list only has a single node, so reset both head and tail
       } else {
-        return this.shift();
+        this.shift();
       }
+      return;
     }
 
     // find the node to delete, and point the node before it to the node after it
-    let before = this.at(index - 1);
-    let current = before.next;
+    const before = this.at(index - 1);
+    const current = before.next;
     before.next = current.next;
     this.size--;
   }
@@ -89,7 +107,11 @@ class LinkedList {
 
   shift() {
     if (this.isEmpty()) return;
-    if (this.size === 1) return this.clear(); // list will be empty so reset head and tail
+
+    if (this.size === 1) {
+      this.clear(); // list will be empty so reset head and tail
+      return;
+    }
 
     this.head = this.head.next;
     this.size--;
@@ -97,10 +119,14 @@ class LinkedList {
 
   pop() {
     if (this.isEmpty()) return;
-    if (this.size === 1) return this.clear(); // list will be empty so reset head and tail
+
+    if (this.size === 1) {
+      this.clear(); // list will be empty so reset head and tail
+      return;
+    }
 
     // find the penultimate element, point it to null, and point the tail to it
-    let before = this.at(this.size - 2);
+    const before = this.at(this.size - 2);
     before.next = null;
     this.tail = before;
     this.size--;
