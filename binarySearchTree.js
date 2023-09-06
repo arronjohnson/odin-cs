@@ -13,18 +13,13 @@ class BinarySearchTree {
     this.root = this.buildTree(sortedArr);
   }
 
-  buildTree(arr) {
-    if (arr.length === 0) return null;
+  buildTree(arr, start = 0, end = arr.length - 1) {
+    if (start > end) return null;
 
-    // obtain the middle value and split the rest of the array into two halves
-    const middle = Math.floor(arr.length / 2);
-    const left = arr.slice(0, middle);
-    const right = arr.slice(middle + 1);
-
-    // construct subtrees from the two halves
+    const middle = Math.floor((start + end) / 2);
     const node = new Node(arr[middle]);
-    node.left = this.buildTree(left);
-    node.right = this.buildTree(right);
+    node.left = this.buildTree(arr, start, middle - 1);
+    node.right = this.buildTree(arr, middle + 1, end);
     return node;
   }
 
@@ -192,6 +187,7 @@ function generateRandomNumbers(amount = getRandomInteger(5, 10), min = 0, max = 
 
 function test() {
   const myTree = new BinarySearchTree(generateRandomNumbers());
+  console.log('Creating initial binary tree using random data...\n');
   console.log(myTree.toString());
   console.log('Balanced? ', myTree.isBalanced());
   console.log(`Level order: ${myTree.levelOrder().join(', ')}`);
